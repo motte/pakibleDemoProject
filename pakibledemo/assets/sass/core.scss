@@ -1,0 +1,88 @@
+/*******
+Core vars
+*******/
+
+$gridButtonBase: 10px;
+$gridButtonSpace: $gridButtonBase/4;
+
+$transitionTime: 150ms;
+
+$mobileMargin: 30px;
+
+// Sizing
+$mainWidth: 1080px;
+$maxWidth: 100%;
+
+// Fonts
+$sanserifFont: Raleway, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$serifFont: Lora, serif;
+
+// Color Palette
+$paletteRed: #E2384C; //rgb(226,56,76);
+$palettePink: #FF6666; //rgba(255,102,102,1)
+$paletteYellow: #ffc543; //rgb(255,197,67)
+$paletteLightGreen: rgb(81, 176, 20); // rgb(255,197,197)
+$paletteLightTan: #F7D1B4; //rgb(247,209,180);
+$paletteDarkGray: #434E5F; // rgba(67,78,95)
+$paletteDarkBlue: #2C3E50; // rgba(44,62,80)
+$paletteGray: #7A7B83; // rgba(122,123,131)
+$paletteLightGray: #eee; // rgba(122,123,131)
+$paletteLightBlue: #4EB1FA; //rgb(78,177,250);
+$paletteTeal: #54bacd; //rgb(84, 186, 205);;
+$palettePurple: #B23F9B; //rgb(178,63,155);
+
+/***
+Mixins
+***/
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-sizing($var) {
+  box-sizing: $var;
+  -webkit-box-sizing: $var;
+  -moz-box-sizing: $var;
+}
+
+@mixin box-shadow-levels($level) {
+  @if $level == 1 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  } @else if $level == 2 {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  } @else if $level == 3 {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  } @else if $level == 4 {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  } @else if $level == 5 {
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+  }
+}
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}

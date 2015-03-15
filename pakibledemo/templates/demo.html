@@ -1,4 +1,5 @@
 {% load static from staticfiles %}
+{% load pipeline %}
 
 <!DOCTYPE html>
 <html>
@@ -17,8 +18,9 @@
     <canvas id="c"></canvas>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+{#    <script src="{% static 'jquery/dist/jquery.js' %}"></script>#}
 {#    <script src="//cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.13/fabric.min.js"></script>#}
-    <script src="{% static 'js/fabric.min.js' %}"></script>
+    {% javascript 'components' %}
     <script>
         $(function(){
             // create a wrapper around native canvas element with id="c"
