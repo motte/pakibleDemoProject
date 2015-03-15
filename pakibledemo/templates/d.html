@@ -1,0 +1,787 @@
+{% load static from staticfiles %}
+{% load analytical %}
+{% load compress %}
+
+<!DOCTYPE html>
+<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+{% analytical_head_top %}
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="msvalidate.01" content="CD71DB00AAD74EB8DADEB3DA65AAEAF9" />
+    <meta name="robots" content="index, follow" />
+    <meta name="security" content="Public" />
+    <meta name="owner" content="Acorn" />
+	<meta name="fragment" content="!">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block description %}Acorn is a mobile app that let's you leave personal messages at the perfect places. Drop an acorn for yourself or others to remind or connect with location.{% endblock %}" />
+    <meta name="keywords" content="{% block keywords %}Acorn, acorn app, acornapp, mobile, message, reminder, social, personal, location-based messaging, location-based mobile{% endblock %}" />
+    <meta name="viewport" content="width=device-width">
+    <!--Facebook/LinkedIn shares-->
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="https://www.acornapp.co" />
+    <meta property="og:image" content="" />
+    <meta property="og:site_name" content="Acorn" />
+    <meta property="og:description" content="Acorn is a location-based mobile app that delivers your personal messages asthe perfect places. Leave a message (called an 'acorn') for yourself and others to remind or connect you with those around you in a simple and beautiful interface." />
+    <meta property="og:title" content="Acorn" />
+    <meta name="google-site-verification" content="dyr9asShOwM_7ghzldf6nIf4ZZkgpVdtXxOPyoJjgtw" />
+    <meta name="p:domain_verify" content="ea7ca2f573f9e96e14bbd1bbfad36bab"/>
+    <meta name="apple-itunes-app" content="app-id=888937242">
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/main.css" />
+
+    <link rel="shortcut icon" href="{{ STATIC_URL }}img/chitchatter-32-04-05-14.ico" />
+    <link rel="apple-touch-icon" href="{{ STATIC_URL }}img/acorn-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}img/acorn-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ STATIC_URL }}img/acorn-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ STATIC_URL }}img/acorn-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes= "144x144" href="{{ STATIC_URL }}img/acorn-icon-144x144.png" />
+
+    <!-- Font Awesome CDN -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,100,700' rel='stylesheet' type='text/css'>
+
+    {% block more_head_scripts %}{% endblock %}
+
+{#    {% compress js %}#}
+	<script src="{{ STATIC_URL }}js/vendor/modernizr.custom.94224.js"></script>
+{#    {% endcompress %}#}
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-52749558-1', 'auto');
+      ga('require', 'displayfeatures');
+      ga('send', 'pageview');
+
+    </script>
+
+{% analytical_head_bottom %}
+</head>
+
+<body {% block body_class %}{% endblock %}>
+{% analytical_body_top %}
+{# Start of mobile menu #}
+<section class="mobile-menu" id="mobile-menu">
+    <div>
+        {% if PARSE_AUTHENTICATED %}
+            <a class="mobile-nav-link" href="{% url 'manage_acorns' %}">DASHBOARD</a>
+            <a class="mobile-nav-link" href="{% url 'manage_acorns' %}">MY ACORNS</a>
+            <a class="mobile-nav-link" href="{% url 'manage_acorns' %}">PROFILE</a>
+        {% else %}
+            <a class="mobile-nav-link" id="first" data-modal="signup">SIGN UP</a>
+        {% endif %}
+
+        <a class="mobile-nav-link" href="{% url 'team' %}">ABOUT US</a>
+    </div>
+</section>
+{# End of mobile menu #}
+<div class="mobile-menu-backdrop"></div>
+{% block header %}
+    <nav>
+        <section class="nav-wrapper">
+            <button class="mobile-menu-button"></button>
+            <a class="nav-logo-wrapper" href="{% url 'index' %}"><img class="logo" src="{{ STATIC_URL }}img/acorn-web-logo.png" alt="Acorn" /></a>
+            <p class="nav-tagline">a social reminders app</p>
+            <div class="nav-link-wrapper">
+                {% if PARSE_AUTHENTICATED %}
+                   <a class="nav-link" href="{% url 'manage_acorns' %}">DASHBOARD</a>
+                   <a class="nav-link" href="{% url 'manage_acorns' %}">MY ACORNS</a>
+                   <a class="nav-link" href="{% url 'manage_acorns' %}">PROFILE</a><!--
+                {% else %}
+                    <a class="nav-link" id="first" data-modal="signup">SIGN UP</a><!--
+                {% endif %}
+                --><a class="nav-link" href="{% url 'team' %}">ABOUT US</a>
+            </div>
+        </section>
+    </nav>
+
+    <a id="mxSubNaviOSDownloadLink" class="desktop-download-iphone-app" href="{% url 'web_to_itunes' %}"><i class="fa fa-apple"></i> Get the iPhone App</a>
+{% endblock %}
+
+{% block main_content %}{% endblock %}
+
+<aside class="modal-backdrop" id="signupModal">
+    <div class="modal-content">
+        <header class="modal-header-block">
+            <h1>SIGN UP</h1>
+        </header>
+{#        <button class="common-button2"><i class="fa fa-facebook"></i> Sign Up with Facebook</button>#}
+{#        <button class="common-button2"><i class="fa fa-twitter"></i> Sign Up with Twitter</button>#}
+{#        <p style="text-align: center;">Or</p>#}
+
+{#        <p style="text-align: center;" id="reg-resp"></p>#}
+{#        <form name="register_form" id="id_register_form" action="" method="post">#}
+{#            {% csrf_token %}#}
+{#            <input class="modal-field" name="register_email" id="id_register_email" type="email" placeholder="Sign Up With Email" />#}
+{#            <p class="common-form-error" id="register_email_error"></p>#}
+{#            <input class="modal-field" name="register_password" id="id_register_password" type="password" placeholder="Password" />#}
+{#            <p class="common-form-error" id="register_password_error"></p>#}
+{#            <button class="modal-submit" id="id_register_button" type="submit"><img id="loader1" class="loader-alignment" src="{{ STATIC_URL }}img/general/salmon-loader.gif" /> Sign Up</button>#}
+{#        </form>#}
+
+        <p class="form-response-container" id="newsletter-resp">Get early VIP updates about Acorn!</p>
+        <form name="email_form" id="id_email_form" action="" method="post">
+            {% csrf_token %}
+            <input class="modal-field" name="email" id="id_email" type="email" placeholder="Email Address" />
+            <p class="common-form-error" id="id_email_error"></p>
+            <button class="modal-submit" id="id_email_button" type="submit"><img id="loader1" class="loader-alignment" src="{{ STATIC_URL }}img/general/salmon-loader.gif" /> Sign Up</button>
+        </form>
+    </div>
+
+    <div class="modal-alert">
+        <p id="cust-mod-alert-msg"></p>
+    </div>
+</aside><!-- modal-backdrop -->
+
+{% block footer %}
+    <footer class="mobile-footer">
+        <a id="mxFooteriOSDownloadLink" href="{% url 'web_to_itunes' %}" class="mobile-download-app2"><i class="fa fa-apple v-align-apple"></i> Get the iPhone App</a>
+
+        <hr class="pink-simple-divider" />
+
+        <div class="half-container">
+            <ul>
+                <li class="footer-link-wrapper"><a class="mobile-footer-link" data-modal="signup">SIGN UP</a></li>
+                <li class="footer-link-wrapper"><a class="mobile-footer-link" href="{% url 'team' %}">ABOUT US</a></li>
+                <li class="footer-link-wrapper"><a class="mobile-footer-link" href=""></a></li>
+            </ul>
+        </div><!--
+        --><div class="half-container">
+            <ul>
+                <li class="footer-link-wrapper"><a class="mobile-footer-link" href="{% url 'privacy' %}">PRIVACY POLICY</a></li>
+                <li class="footer-link-wrapper"><a class="mobile-footer-link" href="{% url 'terms' %}">TERMS OF USE</a></li>
+{#                <li class="footer-link-wrapper"><a class="mobile-footer-link" href="">LOGIN</a></li>#}
+{#                <li class="footer-link-wrapper"><a class="mobile-footer-link" href="">MY ACORNS</a></li>#}
+{#                <li class="footer-link-wrapper"><a class="mobile-footer-link" href="">PROFILE</a></li>#}
+            </ul>
+        </div>
+
+        <div class="footer-logo-wrapper">
+            <a class="footer-logo-container" href="{% url 'index' %}"><img class="footer-logo" src="{{ STATIC_URL }}img/acorn-web-logo.png" alt="Acorn" /></a>
+            <p class="mobile-footer-tagline">&copy;2014 Toppermost, Corp.</p>
+        </div>
+    </footer>
+
+    <footer class="footer">
+        <a id="mxFooteriOSDownloadLink" class="desktop-download-iphone-app-visible" href="{% url 'web_to_itunes' %}"><i class="fa fa-apple"></i> Get the iPhone App</a>
+        <div>
+            <a class="footer-logo-wrapper" href="{% url 'index' %}"><img class="footer-logo" src="{{ STATIC_URL }}img/acorn-web-logo.png" alt="Acorn" /></a>
+            <p class="footer-tagline">&copy;2014 Toppermost, Corp.</p>
+            <div class="footer-link-wrapper">
+                {% if PARSE_AUTHENTICATED %}
+                   <a class="footer-link" href="{% url 'manage_acorns' %}">DASHBOARD</a>
+                   <a class="footer-link" href="{% url 'manage_acorns' %}">MY ACORNS</a>
+                   <a class="footer-link" href="{% url 'manage_acorns' %}">PROFILE</a><!--
+                {% else %}
+                    <a class="footer-link" id="first" data-modal="signup">SIGN UP</a><!--
+                {% endif %}
+                --><a class="footer-link" href="{% url 'team' %}">ABOUT US</a>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+
+
+{% block body_scripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="{{ STATIC_URL }}js/vendor/intlTelInput.min.js"></script>
+{% endblock %}
+
+{% block more_body_scripts %}{% endblock %}
+
+{% if not DEBUG %}
+    <script src="{{ S3_URL }}CACHE/js/1a5265ca929a.js"></script>
+{% else %}
+{% compress js %}
+<script>
+    $(document).ready(function(){
+        var windowWidth = '';
+        var currentVideo = '';
+
+        $("#id_register_number").intlTelInput({
+            autoHideDialCode: false,
+            utilsScript: "{{ STATIC_URL }}js/vendor/intl-tel-utils.js",
+            preferredCountries: ["us", "au", "gb"]
+        });
+
+        $(window).scroll(function(){
+            var scrollHeight = $(window).scrollTop();
+            if(scrollHeight > 50){
+                $('.desktop-download-iphone-app').addClass('reveal');
+            } else {
+                $('.desktop-download-iphone-app').removeClass('reveal');
+            }
+        });
+
+        $('.modal-backdrop').click(function(e){
+            if(e.target !== this){
+                return;
+            } else{
+                $('.modal-backdrop').hide();
+            }
+            $('iframe.youtube-video').attr('src', '');
+        });
+
+
+        $('[data-modal]').click(function(){
+            var modalName = '.modal-backdrop#' + $(this).data('modal') + 'Modal';
+            $(modalName).show();
+
+            var url = $(this).data('youtube');
+            if(url) {
+                var idSelector = '#' + this.id + '-iframe';
+
+                $(idSelector).attr('src', url);
+            }
+        });
+
+{#        $(window).resize(function(){#}
+{#            windowWidth = window.innerWidth;#}
+{#            var windowX = windowWidth*.7;#}
+{#            if(windowWidth > 853){#}
+{#                mobileMenuClose('#mobile-menu', '#main-content-wrapper', '.mobile-menu-button', 10);#}
+{#            } else if(windowWidth < 853 && $('.mobile-menu-button').hasClass('active')){#}
+{#                $('#mobile-menu').css({'width': windowX});#}
+{#                $('#main-content-wrapper').css({'left': windowX});#}
+{#            }#}
+{#        });#}
+
+
+        $('.mobile-menu-button').click(function(){
+            var $menu = $('#mobile-menu');
+
+            if($menu.hasClass('active')){
+                $menu.addClass('inactive');
+                $('.mobile-menu-backdrop').hide();
+
+                setTimeout(function(){
+                    $menu.removeClass('active').css({'width': '100%'});
+                }, 250);
+            } else {
+                $menu.removeClass('inactive').addClass('active');
+                $('.mobile-menu-backdrop').show();
+            }
+        });// End of mobile-menu-button class click
+
+        $('.mobile-nav-link').click(function(){
+            $('.mobile-menu').addClass('inactive').removeClass('active');
+            $('.mobile-menu-backdrop').hide();
+            var scrollHeight = $(window).scrollTop();
+            alert(scrollHeight);
+            if(scrollHeight < 50){
+                window.scrollBy(0, 50);
+            }
+        });
+
+        $('.mobile-menu-backdrop').click(function(){
+            var $menu = $('#mobile-menu');
+            $menu.addClass('inactive');
+            $('.mobile-menu-backdrop').hide();
+
+            setTimeout(function(){
+                $menu.removeClass('active').css({'width': '100%'});
+            }, 250);
+        });
+
+
+        $('.subnav-link-wrapper').mouseleave(function(){
+            $(this).removeClass('active');
+        });
+
+
+        $('#login').click(function(){
+            var subNavSelector = '#sub-login';
+
+            $(subNavSelector).removeClass('scale-hide').addClass('scale-show').css({'visibility': 'visible'});
+
+            var subNavSelectorTwo = '#sub-join';
+            $(subNavSelectorTwo).addClass('scale-hide').removeClass('scale-show').css({'visibility': 'hidden'});
+
+        });
+
+        $('#join').click(function(){
+            var subNavSelector = '#sub-join';
+
+            $(subNavSelector).removeClass('scale-hide').addClass('scale-show').css({'visibility': 'visible'});
+            var subNavSelectorTwo = '#sub-login';
+            $(subNavSelectorTwo).addClass('scale-hide').removeClass('scale-show').css({'visibility': 'hidden'});
+
+        });
+
+        $('section:not(#login, #join)').click(function(){
+            var subNavSelector = '#sub-login';
+            $(subNavSelector).addClass('scale-hide').removeClass('scale-show');
+            var subNavSelectorTwo = '#sub-join';
+            $(subNavSelectorTwo).addClass('scale-hide').removeClass('scale-show');
+
+            setTimeout(function(){
+                $(subNavSelector).css({'visibility': 'hidden'});
+                $(subNavSelectorTwo).css({'visibility': 'hidden'});
+            }, 100);
+        });
+
+        $('[name="login_email"]').keyup(function(){
+            var moo = checkEmail(this);
+        });
+
+        $('[name="email"]').blur(function(){
+            var $emailErrSel = $('#id_email_error');
+
+            if($(this).val().length > 0){
+                if(!checkEmail(this)){
+                    $emailErrSel.show().html("Check your email.  Make sure it's not mistyped.");
+                } else {
+                    $emailErrSel.hide();
+                }
+            } else {
+                $emailErrSel.hide();
+            }
+
+        });  {# End of email input blur #}
+
+        {# Refuse some non-digit entries in mobile number field for register #}
+        $('#id_register_number').keyup(function(){
+            $(this).val($(this).val().replace(/[A-Za-z!@$&^]/g, ""));
+
+            delay(function(){
+
+            }, 1000);
+        });
+
+        {# When submitting email for newsletter #}
+        $('[name="email_form"]').submit(function(e){
+            e.preventDefault();
+            var btnLoader = $('#loader1');
+            var submitBtn = $('#id_email_button');
+            var $emailField = $('#id_email');
+            var $emailErrSel = $('#id_email_error');
+
+            submitBtn.prop('disabled', true);
+            btnLoader.show();
+
+            if($emailField.val().length > 0){
+                if(!checkEmail($emailField.val())){
+                    $emailErrSel.show().html("Check your email.  Make sure it's not mistyped.");
+                    submitBtn.prop('disabled', false);
+                    btnLoader.hide();
+                    return;
+                } else {
+                    $emailErrSel.hide();
+                }
+            } else {
+                $emailErrSel.show().html("Don't forget to fill me out.");
+                submitBtn.prop('disabled', false);
+                btnLoader.hide();
+                return;
+            }
+
+            ajaxPost(e, this.name, '{% url 'add_email' %}', function(resp){
+                var obj = jQuery.parseJSON(resp);
+
+                $('#newsletter-resp').html(obj['message']);
+                $emailField.val('');
+                btnLoader.hide();
+                submitBtn.prop('disabled', false);
+                setTimeout(function(){
+                    $('#newsletter-resp').html('Be the first to know when we launch!');
+                }, 3000);
+            });
+        }); {# end of email_form submit #}
+
+
+        {# Registration email listeners - on keyup check if valid email, on blur check if email already exists #}
+        $('[name="register_email"]').blur(function(){
+            var $emailErrSel = $('#register_email_error');
+            var submitBtn = $('#id_register_button');
+
+            if($(this).val().length > 0){
+                if(!checkEmail(this)){
+                    $emailErrSel.show().html("Check your email.  Make sure it's not mistyped.");
+                    return;
+                } else {
+                    $emailErrSel.hide();
+                }
+
+                submitBtn.prop('disabled', true);
+                isEmailTaken('{% url 'check_email' %}', $('#id_register_email').val(), function(emailTaken){
+                    if(emailTaken == 'true'){
+                        $emailErrSel.show().html("This email is already taken.  Try another?");
+                    }
+                    else if(emailTaken == 'false'){
+                        $emailErrSel.hide();
+                    }
+                    else {
+                        $emailErrSel.show().html("There was an error!  Please try again.");
+                    }
+                    submitBtn.prop('disabled', false);
+                });
+            } else {
+                $emailErrSel.show().html("Don't forget to fill me out.");
+            }
+
+        }); {# end of register email blur #}
+
+        $('[name="register_password"]').blur(function(){
+            var $passErrSel = $('#register_password_error');
+
+            if($(this).val().length > 0){
+                if($(this).val().length < 8){
+                    $passErrSel.show().html("The password should be at least 8 characters :)");
+                } else {
+                    $passErrSel.hide();
+                }
+
+            } else {
+                $passErrSel.show().html("Don't forget to fill me out.");
+            }
+
+        }); {# end of register email blur #}
+
+        {# Registration Form #}
+        $('[name="register_form"]').submit(function(e){
+            e.preventDefault();
+            var btnLoader = $('#signup-loader');
+            var submitBtn = $('#id_register_button');
+            var numSel = $("#id_register_number");
+            var firstSel = $("#id_register_first_name");
+            var lastSel = $("#id_register_last_name");
+            var usernameSel = $("#id_register_username");
+            var emailSel = $("#id_register_email");
+            var passVal = $('#id_register_password').val();
+            var errorPoint = false;
+            var numErrSel = $("#id_register_number_error");
+            var firstErrSel = $("#id_register_first_name_error");
+            var lastErrSel = $("#id_register_last_name_error");
+            var usernameErrSel = $("#id_register_username_error");
+            var emailErrSel = $('#id_register_email_error');
+            var passErrSel = $('#id_register_password_error');
+
+            submitBtn.prop('disabled', true);
+            btnLoader.show();
+            {# Make sure number is not blank #}
+            if(numSel.val().length <= 9 || numSel.intlTelInput("isValidNumber") === false){
+                numErrSel.show();
+                errorPoint = true;
+            } else {
+                numErrSel.hide();
+            }
+            if(firstSel.val().length == 0){
+                firstErrSel.show();
+                errorPoint = true;
+            } else {
+                firstErrSel.hide();
+            }
+            if(lastSel.val().length == 0){
+                lastErrSel.show();
+                errorPoint = true;
+            } else {
+                lastErrSel.hide();
+            }
+            if(usernameSel.val().length == 0){
+                usernameErrSel.show();
+                errorPoint = true;
+            } else {
+                usernameErrSel.hide();
+            }
+            {# Make sure email is not blank #}
+            if(emailSel.val().length == 0){
+                emailErrSel.show().html("Enter your email.");
+                errorPoint = true;
+            }
+            {# Make sure the email is valid #}
+            else if(emailSel.val().length > 0){
+                {# Check if this is a valid email #}
+                if(!checkEmail(emailSel.val())){
+                    emailErrSel.show().html("Check your email.  Make sure it's not mistyped.");
+                    errorPoint = true;
+                } else {
+                    {# Call the function to check email against db #}
+                    isEmailTaken('{% url 'check_email' %}', emailSel.val(), function(emailTaken){
+                        if(emailTaken == 'true'){
+                            emailErrSel.show().html("This email is already taken.  Try another?");
+                            errorPoint = true;
+                        }
+                        else if(emailTaken == 'false'){
+                            emailErrSel.hide();
+                        }
+                        else {
+                            emailErrSel.show().html("There was an error!  Please try again.");
+                            errorPoint = true;
+                        }
+                    });
+                }
+            } else {
+                emailErrSel.hide();
+            }
+
+            {# Make sure the password is not blank and is greater than 8 characters #}
+            if(passVal.length == 0){
+                passErrSel.show().html("Don't forget your password!");
+                errorPoint = true;
+            }
+            else if(passVal.length < 8){
+                passErrSel.show().html("The password should be at least 8 characters :)");
+                errorPoint = true;
+            } else {
+                passErrSel.hide();
+            }
+
+            if(errorPoint == true){
+                submitBtn.prop('disabled', false);
+                btnLoader.hide();
+                return;
+            } else {
+                var countryData = numSel.intlTelInput("getSelectedCountryData");
+                var dialCode = countryData['dialCode'];
+
+                var formData = new FormData(document.forms.namedItem(this.name));
+                formData.append("register_cc", dialCode);
+            }
+
+            var request = new XMLHttpRequest();
+            request.open("POST", '{% url 'signup' %}', true);
+
+            request.onload = function(){
+                var msgSel = $('#reg-resp, #cust-mod-alert-msg');
+                var obj = jQuery.parseJSON(request.response);
+
+                if(obj['boolSuccess'] == 'true'){
+                    {# form submission successful #}
+                    msgSel.html(obj['message']);
+                    btnLoader.hide();
+                    $('#id_register_password').val('');
+
+                    setTimeout(function(){
+{#                        $('.modal-backdrop').hide();#}
+                        msgSel.html('');
+                        submitBtn.prop('disabled', false);
+                    },3000);
+
+                } else {
+                    {# Form submission went wrong #}
+                    msgSel.html(obj['message']);
+                    submitBtn.prop('disabled', false);
+                    btnLoader.hide();
+                }
+            }
+
+            request.send(formData);
+        }); {# end of registration form #}
+
+        $('[name="login_form"]').submit(function(e){
+            e.preventDefault();
+            var btnLoader = $('#loader-login');
+            var submitBtn = $('#id_login_button');
+            var emailSelector = $('#id_login_email');
+            var passVal = $('#id_login_password').val();
+            var errorPoint = false;
+            var emailErrSel = $('#login_email_error');
+            var passErrSel = $('#login_password_error');
+
+            submitBtn.prop('disabled', true);
+            btnLoader.show();
+
+            {# Make sure email is not blank #}
+            if(emailSelector.val().length == 0){
+                emailErrSel.show().html("Don't forget your email!");
+                errorPoint = true;
+            }
+
+            {# Make sure the password is not blank and is greater than 8 characters #}
+            if(passVal.length == 0){
+                passErrSel.show().html("Don't forget your password!");
+                errorPoint = true;
+            }
+            else if(passVal.length < 8){
+                passErrSel.show().html("The password should be at least 8 characters");
+                errorPoint = true;
+            }
+
+            if(errorPoint == true){
+                submitBtn.prop('disabled', false);
+                btnLoader.hide();
+                return;
+            }
+
+            ajaxPost(e, this.name, '{% url 'login' %}', function(resp){
+                var msgSel = $('#login-resp, #cust-mod-alert-msg');
+                var obj = jQuery.parseJSON(resp);
+
+                if(obj['boolSuccess'] == 'true'){
+                    {# form submission successful #}
+                    window.location.href = "{% url 'manage_acorns' %}";
+
+                } else {
+                    {# Form submission went wrong #}
+                    msgSel.html(obj['message']);
+                    submitBtn.prop('disabled', false);
+                    btnLoader.hide();
+                }
+            });
+        });
+
+        $('[data-scroll]').click(function(){
+            var scrollLevel = $(this).data('scroll');
+
+            $('html body').animate({scrollTop: scrollLevel}, 500);
+        });
+
+        $('#id_email').keyup(function(){
+            var is_valid = checkEmail(this);
+            if(is_valid){
+                $('.border-button').addClass('more');
+                $('#join-email-button').show();
+            } else {
+                $('.border-button').removeClass('more');
+                $('#join-email-button').hide();
+            }
+        });
+
+        $('.border-button').click(joinScrollToTop);
+
+
+    });
+
+
+    function joinScrollToTop(){
+        var currScrollTop = document.body.scrollTop;
+        if(currScrollTop < 600){
+            $('html body').animate({scrollTop: 0}, 300, function(){
+{#                    $('.border-button#top').animate({'height': '155px', 'margin-top': '47px'}, 100);#}
+                $('.border-button#top').addClass('animate');
+                $('.nav-link').addClass('exception');
+                $('#join-us-initial-text').animate({'opacity':'0'}, 200, function(){
+                    $('#join-us-initial-text').hide();
+                });
+                $('#join-us-secondary-text').css({'display':'block'}).animate({'opacity':'1'}, 300);
+                $('#id_email').focus();
+            });
+
+        } else {
+            $('html body').animate({scrollTop: 0}, 2000, function(){
+                $('.border-button#top').addClass('animate');
+                $('.nav-link').addClass('exception');
+                $('#join-us-initial-text').animate({'opacity':'0'}, 200, function(){
+                    $('#join-us-initial-text').hide();
+                });
+                $('#join-us-secondary-text').css({'display':'block'}).animate({'opacity':'1'}, 300);
+                $('#id_email').focus();
+            });
+        }
+    }// fn scrollToTop()
+
+    // check if email exists
+    function checkEmailInParse(action, email, callback){
+        var formData = new FormData();
+        formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+        formData.append('email', email);
+
+        var request = new XMLHttpRequest();
+        request.open("POST", action, true);
+
+        request.onload = function(){
+            if(request.status == 200){
+                callback(request.response);
+            }
+            else {
+                callback(request.response);
+            }
+        }
+
+        request.send(formData);
+    } // checkEmailInParse function
+
+    // check if email exists
+    function isEmailTaken(action, email, callback){
+        var formData = new FormData();
+        formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+        formData.append('email', email);
+
+        var request = new XMLHttpRequest();
+        request.open("POST", action, true);
+
+        request.onload = function(){
+            if(request.status == 200){
+                return callback(request.response);
+            }
+            else {
+                return callback(request.response);
+            }
+        }
+
+        request.send(formData);
+    } // checkEmailInParse function
+
+    function checkEmail(input){
+        var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if(regex.test(input.value)){
+            return true;
+        }
+        else if(regex.test(input)){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function ajaxPost(e, form, action, callback){
+        e.preventDefault();
+
+        var formData = new FormData(document.forms.namedItem(form));
+
+        var request = new XMLHttpRequest();
+        request.open("POST", action, true);
+
+        request.onload = function(e){
+            if(request.status == 200){
+                callback(request.response);
+            }
+            else {
+{#                alert('There was an error with the request!');#}
+                callback(request.response);
+            }
+        }
+
+        request.send(formData);
+    } {# End of ajaxPost fn #}
+
+    var delay = (function(){
+        var timer = 0;
+        return function(callback, ms){
+            clearTimeout(timer);
+            timer = setTimeout(callback,ms);
+        }
+    })();
+
+{#    function mobileMenuClose(mobileMenuSelector, contentWrapper, mobileMenuButton, speed){#}
+{#        $(mobileMenuSelector).animate({'width': '0px'},speed);#}
+{#        $(contentWrapper).animate({'left': '0'},speed);#}
+{#        $(mobileMenuButton).removeClass('active');#}
+{#        $('.mobile-menu-backdrop').hide();#}
+{#    }#}
+{##}
+{#    function mobileMenuOpen(mobileMenuSelector, contentWrapper, mobileMenuButton, windowX){#}
+{#        $(mobileMenuSelector).animate({'top': '100px'});#}
+{#        $(contentWrapper).animate({'left': windowX});#}
+{#        $(mobileMenuButton).addClass('active');#}
+{#        $('.mobile-menu-backdrop').show();#}
+{#    }#}
+</script>
+{% endcompress %}
+{% endif %}
+
+{% analytical_body_bottom %}
+</body>
+</html>
