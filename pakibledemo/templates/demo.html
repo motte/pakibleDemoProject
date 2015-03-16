@@ -115,7 +115,6 @@
             var tagline;
             var leftWebsite;
             var rightWebsite;
-            var sig;
             var $boxColorEl = $('.colorPicker1');
             var $textColorEl = $('.colorPicker2');
             setCanvasSizes();
@@ -290,33 +289,34 @@
             function processURL(input) {
 
                 if (input.files && input.files[0]) {
-{#                    canvas.remove(largeLogo);#}
+                    canvas.remove(largeLogo);
+                    canvas.remove(smallLogo);
                     var url = window.URL.createObjectURL(input.files[0]);
-                    alert(largeLogo);
-                    largeLogo.set({src:url});
-{#                    largeLogo.setAttribute("src", url);#}
 
-{#                    largeLogo = fabric.Image.fromURL(url, function (img) {#}
-{#                        img.set({#}
-{#                            height: largeLogoSize,#}
-{#                            width: largeLogoSize,#}
-{#                            angle: 180,#}
-{#                            top: largeLogoLocation['top'],#}
-{#                            left: largeLogoLocation['left']#}
-{#                        });#}
-{#                        canvas.add(img);#}
-{#                    });#}
-{##}
-{#                    smallLogo = fabric.Image.fromURL(url, function (simg) {#}
-{#                        simg.set({#}
-{#                            height: smallLogoSize,#}
-{#                            width: smallLogoSize,#}
-{#                            angle: 180,#}
-{#                            top: smallLogoLocation['top'],#}
-{#                            left: smallLogoLocation['left']#}
-{#                        });#}
-{#                        canvas.add(simg);#}
-{#                    });#}
+                    largeLogo = fabric.Image.fromURL(url, function (img) {
+                        img.set({
+                            height: largeLogoSize,
+                            width: largeLogoSize,
+                            angle: 180,
+                            top: largeLogoLocation['top'],
+                            left: largeLogoLocation['left']
+                        });
+                        canvas.add(img);
+                        canvas.renderAll();
+                    });
+
+                    smallLogo = fabric.Image.fromURL(url, function (simg) {
+                        simg.set({
+                            height: smallLogoSize,
+                            width: smallLogoSize,
+                            angle: 180,
+                            top: smallLogoLocation['top'],
+                            left: smallLogoLocation['left']
+                        });
+                        canvas.add(simg);
+                        canvas.renderAll();
+                    });
+                    canvas.renderAll();
                 }
             }
 
