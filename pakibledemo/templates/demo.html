@@ -28,16 +28,17 @@
 
     <canvas id="c" style="border: 1px solid #dcdcdc; border-radius: 3px; margin: 140px 50px 50px 50px; position: absolute;"></canvas>
     <img src="{% static 'img/blank-launchbox.png' %}" id="base-image" style="display: none;" />
+    <img src="{% static 'img/pakible-logo.png' %}" id="default-logo" style="display: none;" />
     <img src="{% static 'img/blank-launchbox-inverse.png' %}" id="base-image-inverse" style="display: none;" />
 
     <menu style="background: #ccc; border: 1px solid #dcdcdc; display: inline-block; float: right; height: 1000px;width: 33%; min-width: 300px; margin: 50px; padding: 110px 0 0 0;">
         <section>
-            <caption style="height: 30px; width: 100%;">1</caption>
+            <caption style="background-color: #3f3f3f; border-radius: 25px; display: block; height: 30px; width: 100%; font-size: 25px; padding: 10px;">1</caption>
         </section>
 
         <section>
             <caption style="height: 30px; width: 100%;">2</caption>
-            <input accept="image/*" id="logo" name="logo" type="file" onchange="processURL(event)" />
+            <input id="logo" name="logo" type="file" />
         </section>
 
         <section>
@@ -51,67 +52,136 @@
     <script src="{% static 'fabric/dist/fabric.min.js' %}"></script>
 
     <script>
-        $(function(){
+        $(function() {
             var canvas;
             var canvasLength;
-            var logoSize;
+            var largeLogo;
+            var smallLogo;
+            var largeLogoSize;
+            var smallLogoSize;
+            var largeLogoLocation;
+            var smallLogoLocation;
+            var mottoLocation;
+            var mottoMaxWidth;
 
             setCanvasSizes();
             initializePreview();
 
+            $("#logo").change(processURL(document.getElementById("logo")));
 
+            function setCanvasSizes() {
+                if ((window.innerHeight - 100) < window.innerWidth) {
+                    // take the smaller window dimension
+                    canvasLength = (window.innerHeight - 100) * .85;
+                } else {
+                    canvasLength = (window.innerWidth - 100) * .85;
+                }
+                // create a wrapper around native canvas element with id="c"
+                canvas = new fabric.Canvas('c', {
+                    backgroundColor: 'FEFEFE',
+                    height: canvasLength,
+                    width: canvasLength,
+                    renderOnAddRemove: false,
+                    stateful: false,
+                    crossOrigin: 'anonymous'
+                });
+
+                // Set global sizes
+                largeLogoSize = canvasLength * .1;
+                smallLogoSize = canvasLength * .05;
+                // [height, width]
+                largeLogoLocation = {'top': canvasLength/3, 'left': (canvasLength/2)+(largeLogoSize/2)};
+                smallLogoLocation = {'top': canvasLength *.105, 'left': canvasLength *.65};
+
+                mottoMaxWidth = canvasLength/3;
+                mottoLocation = {'top': canvasLength *.9, 'left': (canvasLength/2)+(mottoMaxWidth *.46)};
+            }
+
+            function initializePreview() {
+                var baseMaskEl = document.getElementById('base-image-inverse');
+                var baseMaskInstance = new fabric.Image(baseMaskEl, {
+                    height: canvasLength,
+                    width: canvasLength,
+                    selectable: false
+                });
+
+                var defaultLogoEl = document.getElementById('default-logo');
+                largeLogo = new fabric.Image(defaultLogoEl, {
+                    height: largeLogoSize,
+                    width: largeLogoSize,
+                    angle: 180,
+                    top: largeLogoLocation['top'],
+                    left: largeLogoLocation['left']
+                });
+
+                smallLogo = new fabric.Image(defaultLogoEl, {
+                    height: smallLogoSize,
+                    width: smallLogoSize,
+                    angle: 180,
+                    top: smallLogoLocation['top'],
+                    left: smallLogoLocation['left']
+                });
+
+                canvas.add(baseMaskInstance);
+                canvas.add(largeLogo);
+                canvas.add(smallLogo);
+
+                initializeMotto();
+
+                // important to call if setting Canvas with renderOnAddRemove: false
+                canvas.renderAll();
+            }
+
+            function addLogos() {
+                alert('moo');
+            }
+
+            function initializeMotto() {
+                var text = new fabric.Text('Custom packaging, made simple.', {
+                    top: mottoLocation['top'],
+                    left: mottoLocation['left'],
+                    angle: 180,
+                    fontFamily: 'helvetica',
+                    fontSize: 11,
+                    textAlign: 'center',
+                    selectable: false
+                });
+
+                canvas.add(text);
+            }
+
+            function processURL(input) {
+                if (input.files && input.files[0]) {
+                    canvas.remove(largeLogo);
+                    var url = window.URL.createObjectURL(input.files[0]);
+
+                    largeLogo = fabric.Image.fromURL(url, function (img) {
+                        img.set({
+                            height: largeLogoSize,
+                            width: largeLogoSize,
+                            angle: 180,
+                            top: largeLogoLocation['top'],
+                            left: largeLogoLocation['left']
+                        });
+                        canvas.add(img);
+                    });
+
+                    smallLogo = fabric.Image.fromURL(url, function (simg) {
+                        simg.set({
+                            height: smallLogoSize,
+                            width: smallLogoSize,
+                            angle: 180,
+                            top: smallLogoLocation['top'],
+                            left: smallLogoLocation['left']
+                        });
+                        canvas.add(simg);
+                    });
+                }
+            }
 
         });
 
-        function setCanvasSizes(){
-            if ((window.innerHeight-100) < window.innerWidth) {
-                // take the smaller window dimension
-                canvasLength = (window.innerHeight-100) * .85;
-            } else {
-                canvasLength = (window.innerWidth-100) * .85;
-            }
-            // create a wrapper around native canvas element with id="c"
-            canvas = new fabric.Canvas('c', {
-                backgroundColor: 'FEFEFE',
-                height: canvasLength,
-                width: canvasLength
-            });
 
-            // Set global sizes
-            logoSize = canvasLength * .1;
-        }
-
-        function initializePreview(){
-            var baseMaskEl = document.getElementById('base-image-inverse');
-            var baseMaskInstance = new fabric.Image(baseMaskEl, {
-                height: canvasLength,
-                width: canvasLength,
-                selectable: false
-            });
-
-
-
-            canvas.add(baseMaskInstance);
-        }
-
-        function addLogos(){
-
-        }
-
-        function processURL(input) {
-            if(input.target.files && input.target.files[0]) {
-                var url = window.URL.createObjectURL(input.target.files[0]);
-
-                fabric.Image.fromURL(url, function(img) {
-                    img.set({
-                        rotate: 180,
-                        height: logoSize,
-                        width: logoSize
-                    });
-                    canvas.add(img);
-                });
-            }
-        }
     </script>
 </body>
 </html>
