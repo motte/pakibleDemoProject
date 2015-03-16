@@ -333,7 +333,7 @@ Mixins
   border: 1px solid #dcdcdc;
   display: inline-block;
   float: right;
-  height: 1000px;
+  height: 700px;
   width: 33%;
   min-width: 300px;
   margin: 50px;
@@ -420,7 +420,7 @@ body {
   text-align: center; }
 
 #colorPicker .track {
-  background: #EFEFEF url(../../img/text-color.png) no-repeat 50% 50%;
+  background: #EFEFEF url(../img/text-color.png) no-repeat 50% 50%;
   height: 150px;
   width: 150px;
   padding: 10px;
