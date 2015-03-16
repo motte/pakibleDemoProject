@@ -112,12 +112,22 @@
             var webLeftLoc;
             var webRightLoc;
             var sigLoc;
-
+            var $boxColorEl = $('.colorPicker1');
+            var $textColorEl = $('.colorPicker2');
             setCanvasSizes();
             initializePreview();
 
-            $('.colorPicker1').tinycolorpicker();
-            $('.colorPicker2').tinycolorpicker();
+            $boxColorEl.tinycolorpicker();
+            $textColorEl.tinycolorpicker();
+            var boxColor = $boxColorEl.data("plugin_tinycolorpicker");
+            var textColor = $textColorEl.data("plugin_tinycolorpicker");
+
+            $boxColorEl.bind("change", function(){
+                alert(boxColor.colorHex);
+            });
+            $textColorEl.bind("change", function(){
+                alert(textColor.colorHex);
+            });
 
 {#            $("#logo").on("change", processURL(document.getElementById("logo")));#}
 
