@@ -26,15 +26,15 @@
         </section>
     </nav>
 
-    <canvas id="c" style="border: 1px solid #dcdcdc; border-radius: 3px; margin: 140px 50px 50px 50px; position: absolute;"></canvas>
-    <img src="{% static 'img/blank-launchbox.png' %}" id="base-image" style="display: none;" />
-    <img src="{% static 'img/pakible-logo.png' %}" id="default-logo" style="display: none;" />
-    <img src="{% static 'img/blank-launchbox-inverse.png' %}" id="base-image-inverse" style="display: none;" />
+    <canvas id="c" class="fCanvas"></canvas>
+    <img src="{% static 'img/blank-launchbox.png' %}" id="base-image" class="hidden" />
+    <img src="{% static 'img/pakible-logo.png' %}" id="default-logo" class="hidden" />
+    <img src="{% static 'img/blank-launchbox-inverse.png' %}" id="base-image-inverse" class="hidden" />
 
     <menu class="preview-menu">
         <section class="preview-menu-step-section">
 
-            <label class="preview-menu-step" style="height: 30px; width: 100%;">
+            <label class="preview-menu-step">
                 <div class="menu-step-title">1</div>
                 Info
             </label>
@@ -64,7 +64,28 @@
             <label>
                 <div class="menu-step-title">3</div>
                 Colors
-            </label>
+            </label><br />
+            <div class="center-block">
+            <div  class="center-inline-block">
+                <p>Box Color</p>
+                <div class="colorPicker1" id="colorPicker">
+                    <a class="color"><div class="colorInner"></div></a>
+                    <div class="track"></div>
+                    <ul class="dropdown"><li></li></ul>
+                    <input type="hidden" class="colorInput"/>
+                </div>
+            </div>
+                <span class="med-spacing"></span>
+            <div  class="center-inline-block">
+                <p>Text Color</p>
+                <div class="colorPicker2" id="colorPicker">
+                    <a class="color"><div class="colorInner"></div></a>
+                    <div class="track"></div>
+                    <ul class="dropdown"><li></li></ul>
+                    <input type="hidden" class="colorInput"/>
+                </div>
+            </div>
+            </div>
         </section>
 
         <button class="submit-button"><i class="fa fa-file-text"></i>&nbsp;&nbsp;Generate PDF</button>
@@ -74,9 +95,10 @@
 {#    <script src="{% static 'jquery/dist/jquery.js' %}"></script>#}
 {#    <script src="//cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.13/fabric.min.js"></script>#}
     <script src="{% static 'fabric/dist/fabric.min.js' %}"></script>
+    <script src="{% static 'tinycolorpicker/lib/jquery.tinycolorpicker.js' %}"></script>
 
     <script>
-        $(function() {
+        $(window).ready(function() {
             var canvas;
             var canvasLength;
             var largeLogo;
@@ -93,6 +115,9 @@
 
             setCanvasSizes();
             initializePreview();
+
+            $('.colorPicker1').tinycolorpicker();
+            $('.colorPicker2').tinycolorpicker();
 
 {#            $("#logo").on("change", processURL(document.getElementById("logo")));#}
 

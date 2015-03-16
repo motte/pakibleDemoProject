@@ -1,33 +1,23 @@
-/* line 1, ../sass/partials/figures.scss */
 .fCanvas {
   border: 1px solid #dcdcdc;
   border-radius: 3px;
   margin: 140px 50px 50px 50px;
-  position: absolute;
-}
+  position: absolute; }
 
-/* line 8, ../sass/partials/figures.scss */
 .hidden {
-  display: none;
-}
+  display: none; }
 
-/* line 12, ../sass/partials/figures.scss */
 .center-block {
   margin: 0 auto 0 auto;
-  text-align: center;
-}
+  text-align: center; }
 
-/* line 16, ../sass/partials/figures.scss */
 .center-inline-block {
   display: inline-block;
   margin: 0 auto 0 auto;
-  text-align: center;
-}
+  text-align: center; }
 
-/* line 22, ../sass/partials/figures.scss */
 .med-spacing {
-  margin: 15px;
-}
+  margin: 15px; }
 
 /*******
 Core vars
@@ -38,7 +28,6 @@ Mixins
 /*
 Headers CSS
 */
-/* line 7, ../sass/partials/navs.scss */
 nav {
   background: #fff;
   border-bottom: 1px solid #eee;
@@ -51,15 +40,11 @@ nav {
   margin: 0 auto 0 auto;
   padding: 0;
   position: fixed;
-  z-index: 100000;
-}
+  z-index: 100000; }
 
-/* line 22, ../sass/partials/navs.scss */
 .nav-bottom-divider {
-  display: none;
-}
+  display: none; }
 
-/* line 26, ../sass/partials/navs.scss */
 footer {
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -69,34 +54,26 @@ footer {
   height: 140px;
   width: 100%;
   margin: 0 auto 0 auto;
-  bottom: 0;
-}
+  bottom: 0; }
 
-/* line 39, ../sass/partials/navs.scss */
 footer.footer {
   display: block;
   height: 140px;
   margin: 0;
   bottom: 0;
-  overflow: hidden;
-}
+  overflow: hidden; }
 
-/* line 47, ../sass/partials/navs.scss */
 .footer-logo-wrapper {
   left: 0;
   margin: 25px 0 0 70px;
-  position: absolute;
-}
+  position: absolute; }
 
 /* start of navbar */
-/* line 55, ../sass/partials/navs.scss */
 .nav-wrapper {
   height: 100%;
   max-width: 1450px;
-  margin: 0 auto 0 auto;
-}
+  margin: 0 auto 0 auto; }
 
-/* line 61, ../sass/partials/navs.scss */
 .nav-tagline {
   color: #8b8989;
   display: inline-block;
@@ -105,10 +82,8 @@ footer.footer {
   font-weight: 400;
   left: 250px;
   position: absolute;
-  vertical-align: middle;
-}
+  vertical-align: middle; }
 
-/* line 72, ../sass/partials/navs.scss */
 .nav-link-wrapper {
   display: inline-block;
   margin: 0px auto 0 auto;
@@ -123,10 +98,8 @@ footer.footer {
   z-index: 1000;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
-/* line 89, ../sass/partials/navs.scss */
 .nav-link {
   border-radius: 3px;
   color: #7A7A7A;
@@ -145,16 +118,12 @@ footer.footer {
   text-decoration: none;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
-/* line 110, ../sass/partials/navs.scss */
 .nav-link:hover {
   background-color: #ff6900;
-  color: #fff;
-}
+  color: #fff; }
 
-/* line 115, ../sass/partials/navs.scss */
 .subnav-link-wrapper {
   background: #ddd;
   right: 0;
@@ -172,37 +141,27 @@ footer.footer {
   vertical-align: bottom;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
-/* line 135, ../sass/partials/navs.scss */
 .subnav-link-wrapper.active {
   display: block;
   width: 100%;
   -webkit-animation: expandOut ease-in 150ms;
   -moz-animation: expandOut ease-in 150ms;
-  animation: expandOut ease-in 150ms;
-}
+  animation: expandOut ease-in 150ms; }
 
 @keyframes expandOut {
   0% {
     display: block;
-    width: 0;
-  }
+    width: 0; }
   100% {
-    width: 100%;
-  }
-}
+    width: 100%; } }
 @-webkit-keyframes expandOut {
   0% {
     display: block;
-    width: 0;
-  }
+    width: 0; }
   100% {
-    width: 100%;
-  }
-}
-/* line 163, ../sass/partials/navs.scss */
+    width: 100%; } }
 .subnav-link {
   border-bottom: 2px solid transparent;
   color: #7A7A7A;
@@ -216,16 +175,12 @@ footer.footer {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  text-decoration: none;
-}
+  text-decoration: none; }
 
-/* line 179, ../sass/partials/navs.scss */
 .subnav-link:hover {
-  border-bottom: 2px solid #7A7A7A;
-}
+  border-bottom: 2px solid #7A7A7A; }
 
 /* end of navbar */
-/* line 185, ../sass/partials/navs.scss */
 .logo {
   border-radius: 3px;
   height: 40px;
@@ -236,28 +191,22 @@ footer.footer {
   right: 0;
   margin: auto 0 auto 50px;
   position: absolute;
-  vertical-align: middle;
-}
+  vertical-align: middle; }
 
-/* line 198, ../sass/partials/navs.scss */
 .logo-name {
   color: #e95747;
   display: inline-block;
   font-size: 35px;
   font-weight: 400;
-  margin: 0;
-}
+  margin: 0; }
 
-/* line 206, ../sass/partials/navs.scss */
 .nav-right {
   color: #fff;
   display: inline-block;
   float: right;
   font-family: helvetica neue;
-  font-size: 19px;
-}
+  font-size: 19px; }
 
-/* line 214, ../sass/partials/navs.scss */
 .app-store-button {
   background: transparent;
   color: #fff;
@@ -267,15 +216,11 @@ footer.footer {
   margin: 0 0 0 13px;
   opacity: .8;
   padding: 7px 10px;
-  text-decoration: none;
-}
+  text-decoration: none; }
 
-/* line 226, ../sass/partials/navs.scss */
 .app-store-button:hover {
-  opacity: 1;
-}
+  opacity: 1; }
 
-/* line 230, ../sass/partials/navs.scss */
 .rightside-nav {
   display: inline-block;
   width: 33.3%;
@@ -284,24 +229,18 @@ footer.footer {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  vertical-align: top;
-}
+  vertical-align: top; }
 
-/* line 241, ../sass/partials/navs.scss */
 .rightside-nav-link {
   width: 100%;
   padding: 5px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
-/* line 249, ../sass/partials/navs.scss */
 .leftside-nav-link:hover {
-  background: #d0d0d0;
-}
+  background: #d0d0d0; }
 
-/* line 253, ../sass/partials/navs.scss */
 .acorn-subnav {
   background: #fff;
   border: none;
@@ -321,21 +260,15 @@ footer.footer {
   box-sizing: border-box;
   text-align: center;
   text-decoration: none;
-  vertical-align: top;
-}
+  vertical-align: top; }
 
-/* line 275, ../sass/partials/navs.scss */
 .acorn-subnav:hover, .acorn-subnav.active {
   border-bottom: 2px solid #E2384C;
-  color: #E2384C;
-}
+  color: #E2384C; }
 
-/* line 280, ../sass/partials/navs.scss */
 .acorn-subnav::-webkit-input-placeholder {
-  color: #7A7B83;
-}
+  color: #7A7B83; }
 
-/* line 284, ../sass/partials/navs.scss */
 .footer-container {
   background: transparent;
   border-top: 1px solid #fff;
@@ -350,36 +283,28 @@ footer.footer {
   min-width: 300px;
   width: 96%;
   text-align: left;
-  vertical-align: middle;
-}
+  vertical-align: middle; }
 
-/* line 301, ../sass/partials/navs.scss */
 .footer-logo {
   display: inline;
   height: 40px;
   width: auto;
   margin: 0px 20px 0 0;
   position: relative;
-  vertical-align: middle;
-}
+  vertical-align: middle; }
 
-/* line 310, ../sass/partials/navs.scss */
 .footer-logo-name {
   color: white;
   display: inline-block;
   font-size: 28px;
   font-weight: 400;
-  margin: 0;
-}
+  margin: 0; }
 
-/* line 318, ../sass/partials/navs.scss */
 .footer-left {
   display: inline-block;
   height: 50px;
-  margin: 20px 0 0 0;
-}
+  margin: 20px 0 0 0; }
 
-/* line 324, ../sass/partials/navs.scss */
 .footer-right {
   color: #fff;
   display: inline-block;
@@ -387,22 +312,22 @@ footer.footer {
   font-family: helvetica neue;
   font-size: 19px;
   height: 50px;
-  margin: -5px 0 0 0;
-}
+  margin: -5px 0 0 0; }
 
-/* line 334, ../sass/partials/navs.scss */
 .footer-link-wrapper {
   height: 90px;
-  margin: 0;
-}
+  margin: 0; }
 
-/* line 339, ../sass/partials/navs.scss */
 .footer-link-wrapper {
   float: right;
-  margin: 0 45px 20px 0;
-}
+  margin: 0 45px 20px 0; }
 
-/* line 3, ../sass/partials/forms.scss */
+/*******
+Core vars
+*******/
+/***
+Mixins
+***/
 .preview-menu {
   background: #ccc;
   border: 1px solid #dcdcdc;
@@ -412,24 +337,18 @@ footer.footer {
   width: 33%;
   min-width: 300px;
   margin: 50px;
-  padding: 100px 0 0 0;
-}
+  padding: 100px 0 0 0; }
 
-/* line 15, ../sass/partials/forms.scss */
 .preview-menu-step-section {
   font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 100;
-  margin: 0 25px;
-}
+  margin: 0 25px; }
 
-/* line 21, ../sass/partials/forms.scss */
 .preview-menu-step {
   font-size: 20px;
   height: 30px;
-  width: 100%;
-}
+  width: 100%; }
 
-/* line 26, ../sass/partials/forms.scss */
 .menu-step-title {
   background-color: #3f3f3f;
   border-radius: 50px;
@@ -443,15 +362,11 @@ footer.footer {
   margin-top: 10px;
   padding: 10px;
   text-align: center;
-  vertical-align: middle;
-}
+  vertical-align: middle; }
 
-/* line 42, ../sass/partials/forms.scss */
 .align-right {
-  text-align: right;
-}
+  text-align: right; }
 
-/* line 46, ../sass/partials/forms.scss */
 .menu-input {
   border: 1px solid #eee;
   border-radius: 3px;
@@ -459,10 +374,8 @@ footer.footer {
   height: 20px;
   width: 200px;
   margin: 10px 0;
-  padding: 5px;
-}
+  padding: 5px; }
 
-/* line 56, ../sass/partials/forms.scss */
 .menu-file-input {
   background: #333;
   border-radius: 3px;
@@ -472,10 +385,8 @@ footer.footer {
   width: 200px;
   margin: 10px 0 10px 20%;
   padding: 10px 15px;
-  text-align: right;
-}
+  text-align: right; }
 
-/* line 68, ../sass/partials/forms.scss */
 .submit-button {
   background-color: #009900;
   border: none;
@@ -488,25 +399,17 @@ footer.footer {
   margin: 25px auto 0 auto;
   padding: 12px 25px;
   position: relative;
-  text-align: center;
-}
+  text-align: center; }
 
-/* line 83, ../sass/partials/forms.scss */
 .submit-button:hover {
-  background-color: rgba(0, 153, 0, 0.8);
-}
+  background-color: rgba(0, 153, 0, 0.8); }
 
-/* line 1, ../sass/partials/containers.scss */
 body {
-  background-color: #fff;
-}
+  background-color: #fff; }
 
-/* line 5, ../sass/partials/containers.scss */
 .canvas-container {
-  display: inline-block;
-}
+  display: inline-block; }
 
-/* line 2, ../sass/vendor/tinycolorpicker.scss */
 #colorPicker {
   display: inline-block;
   width: 30px;
@@ -514,10 +417,8 @@ body {
   position: relative;
   clear: both;
   margin: 0 auto 12px auto;
-  text-align: center;
-}
+  text-align: center; }
 
-/* line 13, ../sass/vendor/tinycolorpicker.scss */
 #colorPicker .track {
   background: #EFEFEF url(../img/text-color.png) no-repeat 50% 50%;
   height: 150px;
@@ -533,10 +434,8 @@ body {
   z-index: 10;
   -webkit-border-radius: 150px;
   -moz-border-radius: 150px;
-  border-radius: 150px;
-}
+  border-radius: 150px; }
 
-/* line 32, ../sass/vendor/tinycolorpicker.scss */
 #colorPicker .color {
   width: 25px;
   height: 25px;
@@ -549,19 +448,15 @@ body {
   -webkit-border-radius: 27px;
   -moz-border-radius: 27px;
   border-radius: 27px;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
-/* line 47, ../sass/vendor/tinycolorpicker.scss */
 #colorPicker .colorInner {
   width: 25px;
   height: 25px;
   -webkit-border-radius: 27px;
   -moz-border-radius: 27px;
-  border-radius: 27px;
-}
+  border-radius: 27px; }
 
-/* line 55, ../sass/vendor/tinycolorpicker.scss */
 #colorPicker .dropdown {
   list-style: none;
   display: none;
@@ -570,11 +465,10 @@ body {
   top: 28px;
   border: 1px solid #ccc;
   left: 0;
-  z-index: 1000;
-}
+  z-index: 1000; }
 
-/* line 66, ../sass/vendor/tinycolorpicker.scss */
 #colorPicker .dropdown li {
   height: 25px;
-  cursor: pointer;
-}
+  cursor: pointer; }
+
+/*# sourceMappingURL=main.css.map */

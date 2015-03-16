@@ -1,0 +1,30 @@
+/* line 1, ../../sass/partials/figures.scss */
+.fCanvas {
+  border: 1px solid #dcdcdc;
+  border-radius: 3px;
+  margin: 140px 50px 50px 50px;
+  position: absolute;
+}
+
+/* line 8, ../../sass/partials/figures.scss */
+.hidden {
+  display: none;
+}
+
+/* line 12, ../../sass/partials/figures.scss */
+.center-block {
+  margin: 0 auto 0 auto;
+  text-align: center;
+}
+
+/* line 16, ../../sass/partials/figures.scss */
+.center-inline-block {
+  display: inline-block;
+  margin: 0 auto 0 auto;
+  text-align: center;
+}
+
+/* line 22, ../../sass/partials/figures.scss */
+.med-spacing {
+  margin: 15px;
+}

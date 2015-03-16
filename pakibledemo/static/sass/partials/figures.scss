@@ -1,0 +1,24 @@
+.fCanvas {
+  border: 1px solid #dcdcdc;
+  border-radius: 3px;
+  margin: 140px 50px 50px 50px;
+  position: absolute;
+}
+
+.hidden {
+  display: none;
+}
+
+.center-block {
+  margin: 0 auto 0 auto; text-align: center;
+}
+
+.center-inline-block {
+  display: inline-block;
+  margin: 0 auto 0 auto;
+  text-align: center;
+}
+
+.med-spacing {
+  margin: 15px;
+}

@@ -1,6 +1,9 @@
-@import "compass/reset";
+//@import "compass/reset";
 
+
+@import "partials/figures";
 @import "partials/navs";
 @import "partials/forms";
 @import "partials/animations";
 @import "partials/containers";
+@import "vendor/tinycolorpicker";
