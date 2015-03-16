@@ -57,7 +57,7 @@
                 <div class="menu-step-title">2</div>
                 Logo
             </label>
-            <input class="menu-file-input" id="logo" name="logo" type="file" onchange="processURL(this)" />
+            <input class="menu-file-input" id="logo" name="logo" type="file"  />
         </section>
 
         <section class="preview-menu-step-section">
@@ -112,6 +112,10 @@
             var webLeftLoc;
             var webRightLoc;
             var sigLoc;
+            var tagline;
+            var leftWebsite;
+            var rightWebsite;
+            var sig;
             var $boxColorEl = $('.colorPicker1');
             var $textColorEl = $('.colorPicker2');
             setCanvasSizes();
@@ -123,13 +127,24 @@
             var textColor = $textColorEl.data("plugin_tinycolorpicker");
 
             $boxColorEl.bind("change", function(){
-                alert(boxColor.colorHex);
+                var hex = boxColor.colorHex;
+                hex = hex.replace(/^#/, '');
+                canvas.setBackgroundColor(hex);
+                canvas.renderAll();
             });
             $textColorEl.bind("change", function(){
-                alert(textColor.colorHex);
+                var hex = textColor.colorHex;
+                hex = hex.replace(/^#/, '');
+                rgb = new fabric.Color(hex).toRgb();
+                tagline.fill = rgb;
+                leftWebsite.fill = rgb;
+                rightWebsite.fill = rgb;
+
+                canvas.renderAll();
             });
 
-{#            $("#logo").on("change", processURL(document.getElementById("logo")));#}
+            $("#logo").bind("change", processURL(this));
+
 
             function setCanvasSizes() {
                 if ((window.innerHeight - 100) < window.innerWidth) {
@@ -231,10 +246,14 @@
                     textAlign: 'center',
                     selectable: false
                 };
-                canvasText('   Custom packaging, made simple.', taglineAttr);
-                canvasText('          www.pakible.com', websiteLeftAttr);
-                canvasText('          www.pakible.com', websiteRightAttr);
-                canvasText('Made using Pakible.com', sigAttr);
+                tagline = canvasText('   Custom packaging, made simple.', taglineAttr);
+                leftWebsite = canvasText('          www.pakible.com', websiteLeftAttr);
+                rightWebsite = canvasText('          www.pakible.com', websiteRightAttr);
+                sig = canvasText('Made using Pakible.com', sigAttr);
+{#                canvasText('   Custom packaging, made simple.', taglineAttr);#}
+{#                canvasText('          www.pakible.com', websiteLeftAttr);#}
+{#                canvasText('          www.pakible.com', websiteRightAttr);#}
+{#                canvasText('Made using Pakible.com', sigAttr);#}
                 // important to call if setting Canvas with renderOnAddRemove: false
                 canvas.renderAll();
             }
@@ -246,10 +265,11 @@
             function canvasText(txt, attr) {
                 var cText = new fabric.Text(txt, attr);
                 canvas.add(cText);
+                return cText;
             }
 
             function processURL(input) {
-                alert(input.files[0]);
+{#                alert(input.files[0]);#}
                 if (input.files && input.files[0]) {
                     alert('as');
 {#                    canvas.remove(largeLogo);#}
