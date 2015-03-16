@@ -1,0 +1,9 @@
+/* line 1, ../../sass/partials/containers.scss */
+body {
+  background-color: #fff;
+}
+
+/* line 5, ../../sass/partials/containers.scss */
+.canvas-container {
+  display: inline-block;
+}
