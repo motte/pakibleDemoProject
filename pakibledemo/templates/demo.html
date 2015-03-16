@@ -40,15 +40,15 @@
             </label>
             <div class="align-right">
                 <label>Brand Name</label>
-                <input class="menu-input" type="text" name="brand" placeholder="Brand Name" />
+                <input id="brand" class="menu-input" type="text" name="brand" placeholder="Brand Name" />
             </div>
             <div class="align-right">
                 <label>Website</label>
-                <input class="menu-input" type="text" name="website" placeholder="www.yoursite.com" />
+                <input id="website" class="menu-input" type="text" name="website" placeholder="www.yoursite.com" />
             </div>
             <div class="align-right">
                 <label>Tagline</label>
-                <input class="menu-input" type="text" name="tagline" placeholder="Tagline, slogan, or motto" />
+                <input id="tagline" maxlength="33" class="menu-input" type="text" name="tagline" placeholder="Tagline, slogan, or motto" />
             </div>
         </section>
 
@@ -143,7 +143,19 @@
                 canvas.renderAll();
             });
 
-            $("#logo").bind("change", processURL(this));
+            $("#logo").change(function(){processURL(this)});
+
+            $("#tagline").keyup(function(){
+                if (this.value.length < 33) {
+                    editCanvasTagline(this.value);
+                }
+            });
+
+            $("#website").keyup(function(){
+                if (this.value.length < 33) {
+                    editCanvasWebsite(this.value);
+                }
+            });
 
 
             function setCanvasSizes() {
@@ -249,11 +261,7 @@
                 tagline = canvasText('   Custom packaging, made simple.', taglineAttr);
                 leftWebsite = canvasText('          www.pakible.com', websiteLeftAttr);
                 rightWebsite = canvasText('          www.pakible.com', websiteRightAttr);
-                sig = canvasText('Made using Pakible.com', sigAttr);
-{#                canvasText('   Custom packaging, made simple.', taglineAttr);#}
-{#                canvasText('          www.pakible.com', websiteLeftAttr);#}
-{#                canvasText('          www.pakible.com', websiteRightAttr);#}
-{#                canvasText('Made using Pakible.com', sigAttr);#}
+                canvasText('Made using Pakible.com', sigAttr);
                 // important to call if setting Canvas with renderOnAddRemove: false
                 canvas.renderAll();
             }
@@ -268,16 +276,26 @@
                 return cText;
             }
 
-            function processURL(input) {
-{#                alert(input.files[0]);#}
-                if (input.files && input.files[0]) {
-                    alert('as');
-{#                    canvas.remove(largeLogo);#}
-                    alert('a');
-                    var url = window.URL.createObjectURL(input.files[0]);
+            function editCanvasTagline(newText){
+                tagline.set({text: newText});
+                canvas.renderAll();
+            }
 
-                    largeLogo.setAttribute("src", url);
-                    alert('b');
+            function editCanvasWebsite(newText){
+                leftWebsite.set({text: newText});
+                rightWebsite.set({text: newText});
+                canvas.renderAll();
+            }
+
+            function processURL(input) {
+
+                if (input.files && input.files[0]) {
+{#                    canvas.remove(largeLogo);#}
+                    var url = window.URL.createObjectURL(input.files[0]);
+                    alert(largeLogo);
+                    largeLogo.set({src:url});
+{#                    largeLogo.setAttribute("src", url);#}
+
 {#                    largeLogo = fabric.Image.fromURL(url, function (img) {#}
 {#                        img.set({#}
 {#                            height: largeLogoSize,#}
