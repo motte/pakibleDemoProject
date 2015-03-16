@@ -88,7 +88,7 @@
             </div>
         </section>
 
-        <button class="submit-button"><i class="fa fa-file-text"></i>&nbsp;&nbsp;Generate PDF</button>
+        <button id="generatePdf" class="submit-button"><i class="fa fa-file-text"></i>&nbsp;&nbsp;Generate PDF</button>
     </menu>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -96,6 +96,7 @@
 {#    <script src="//cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.13/fabric.min.js"></script>#}
     <script src="{% static 'fabric/dist/fabric.min.js' %}"></script>
     <script src="{% static 'tinycolorpicker/lib/jquery.tinycolorpicker.js' %}"></script>
+    <script src="{% static 'jspdf/dist/jspdf.debug.js' %}"></script>
 
     <script>
         $(window).ready(function() {
@@ -163,6 +164,10 @@
                 if (this.value.length < 33) {
                     editCanvasBrand(this.value);
                 }
+            });
+
+            $('#generatePdf').click(function(){
+                canvasToPdf();
             });
 
 
@@ -350,6 +355,16 @@
                     });
                     canvas.renderAll();
                 }
+            }
+
+
+            function canvasToPdf() {
+                // only jpg is supported by jsPDF
+                var imgData = canvas.toDataURL("image/jpeg", 1.0);
+                var pdf = new jsPDF();
+
+                pdf.addImage(imgData, 'JPEG', 0, 0);
+                pdf.save("download.pdf");
             }
 
         });
