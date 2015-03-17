@@ -13,13 +13,13 @@
 }
 
 .preview-menu-step-section {
+  color: #777;
   font-family: $sanserifFont;
   font-weight: 100;
   margin: 0 25px;
 }
 
 .preview-menu-step {
-  color: #777;
   font-size: 18px;
   font-weight: 500;
   height: 30px; width: 100%;
@@ -47,14 +47,26 @@
   text-align: right;
 }
 
+.menu-input::-webkit-input-placeholder {
+  font-family: $sanserifFont;
+  font-weight: 100;
+}
+
 .menu-input {
   border: 1px solid #eee;
   border-radius: 3px;
+  color: rgb(119,119,119);
   font-size: 15px;
+  font-weight: 100;
   height: 20px;
   width: 200px;
   margin: 10px 0;
   padding: 5px;
+}
+
+.menu-input:focus {
+  outline: none;
+  box-shadow: 0 0 10px #23ca9e;
 }
 
 .menu-file-input {
@@ -67,6 +79,11 @@
   margin: 10px 0 10px 20%;
   padding: 10px 15px;
   text-align: right;
+}
+
+.menu-file-input:focus {
+  outline: none;
+  box-shadow: 0 0 10px #23ca9e;
 }
 
 .submit-button {
@@ -86,4 +103,9 @@
 
 .submit-button:hover {
   background-color: rgba(36,209,164,.8);
+}
+
+.submit-button:focus {
+  outline: none;
+  box-shadow: 0 0 10px #23ca9e;
 }

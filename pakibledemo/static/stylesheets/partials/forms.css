@@ -19,14 +19,14 @@ Mixins
 
 /* line 15, ../../sass/partials/forms.scss */
 .preview-menu-step-section {
+  color: #777;
   font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 100;
   margin: 0 25px;
 }
 
-/* line 21, ../../sass/partials/forms.scss */
+/* line 22, ../../sass/partials/forms.scss */
 .preview-menu-step {
-  color: #777;
   font-size: 18px;
   font-weight: 500;
   height: 30px;
@@ -58,17 +58,31 @@ Mixins
 }
 
 /* line 50, ../../sass/partials/forms.scss */
+.menu-input::-webkit-input-placeholder {
+  font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+}
+
+/* line 55, ../../sass/partials/forms.scss */
 .menu-input {
   border: 1px solid #eee;
   border-radius: 3px;
+  color: #777777;
   font-size: 15px;
+  font-weight: 100;
   height: 20px;
   width: 200px;
   margin: 10px 0;
   padding: 5px;
 }
 
-/* line 60, ../../sass/partials/forms.scss */
+/* line 67, ../../sass/partials/forms.scss */
+.menu-input:focus {
+  outline: none;
+  box-shadow: 0 0 10px #23ca9e;
+}
+
+/* line 72, ../../sass/partials/forms.scss */
 .menu-file-input {
   background: #ccc;
   border-radius: 3px;
@@ -81,7 +95,13 @@ Mixins
   text-align: right;
 }
 
-/* line 72, ../../sass/partials/forms.scss */
+/* line 84, ../../sass/partials/forms.scss */
+.menu-file-input:focus {
+  outline: none;
+  box-shadow: 0 0 10px #23ca9e;
+}
+
+/* line 89, ../../sass/partials/forms.scss */
 .submit-button {
   background-color: #24D1A4;
   border: none;
@@ -97,7 +117,13 @@ Mixins
   text-align: center;
 }
 
-/* line 87, ../../sass/partials/forms.scss */
+/* line 104, ../../sass/partials/forms.scss */
 .submit-button:hover {
   background-color: rgba(36, 209, 164, 0.8);
+}
+
+/* line 108, ../../sass/partials/forms.scss */
+.submit-button:focus {
+  outline: none;
+  box-shadow: 0 0 10px #23ca9e;
 }
