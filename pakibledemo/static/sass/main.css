@@ -345,14 +345,16 @@ Mixins
   margin: 0 25px; }
 
 .preview-menu-step {
+  color: #777;
   font-size: 18px;
+  font-weight: 500;
   height: 30px;
   width: 100%;
   line-height: 40px;
   vertical-align: bottom; }
 
 .menu-step-title {
-  background-color: #3f3f3f;
+  background-color: #24D1A4;
   border-radius: 50px;
   color: #fff;
   display: inline-block;
@@ -390,7 +392,7 @@ Mixins
   text-align: right; }
 
 .submit-button {
-  background-color: #009900;
+  background-color: #24D1A4;
   border: none;
   border-radius: 3px;
   color: #fff;
@@ -404,7 +406,7 @@ Mixins
   text-align: center; }
 
 .submit-button:hover {
-  background-color: rgba(0, 153, 0, 0.8); }
+  background-color: rgba(36, 209, 164, 0.8); }
 
 body {
   background-color: #fff; }

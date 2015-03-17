@@ -26,16 +26,18 @@ Mixins
 
 /* line 21, ../../sass/partials/forms.scss */
 .preview-menu-step {
+  color: #777;
   font-size: 18px;
+  font-weight: 500;
   height: 30px;
   width: 100%;
   line-height: 40px;
   vertical-align: bottom;
 }
 
-/* line 28, ../../sass/partials/forms.scss */
+/* line 30, ../../sass/partials/forms.scss */
 .menu-step-title {
-  background-color: #3f3f3f;
+  background-color: #24D1A4;
   border-radius: 50px;
   color: #fff;
   display: inline-block;
@@ -50,12 +52,12 @@ Mixins
   vertical-align: middle;
 }
 
-/* line 44, ../../sass/partials/forms.scss */
+/* line 46, ../../sass/partials/forms.scss */
 .align-right {
   text-align: right;
 }
 
-/* line 48, ../../sass/partials/forms.scss */
+/* line 50, ../../sass/partials/forms.scss */
 .menu-input {
   border: 1px solid #eee;
   border-radius: 3px;
@@ -66,7 +68,7 @@ Mixins
   padding: 5px;
 }
 
-/* line 58, ../../sass/partials/forms.scss */
+/* line 60, ../../sass/partials/forms.scss */
 .menu-file-input {
   background: #ccc;
   border-radius: 3px;
@@ -79,9 +81,9 @@ Mixins
   text-align: right;
 }
 
-/* line 70, ../../sass/partials/forms.scss */
+/* line 72, ../../sass/partials/forms.scss */
 .submit-button {
-  background-color: #009900;
+  background-color: #24D1A4;
   border: none;
   border-radius: 3px;
   color: #fff;
@@ -95,7 +97,7 @@ Mixins
   text-align: center;
 }
 
-/* line 85, ../../sass/partials/forms.scss */
+/* line 87, ../../sass/partials/forms.scss */
 .submit-button:hover {
-  background-color: rgba(0, 153, 0, 0.8);
+  background-color: rgba(36, 209, 164, 0.8);
 }
