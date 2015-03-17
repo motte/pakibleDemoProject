@@ -1,6 +1,6 @@
 /* line 1, ../sass/partials/figures.scss */
 .fCanvas {
-  border: 1px solid #dcdcdc;
+  border: 1px solid #d8d8d8;
   border-radius: 3px;
   margin: 140px 50px 50px 50px;
   position: absolute;
@@ -404,8 +404,8 @@ footer.footer {
 
 /* line 3, ../sass/partials/forms.scss */
 .preview-menu {
-  background: #ccc;
-  border: 1px solid #dcdcdc;
+  background: #f9f9f9;
+  border: 1px solid #d8d8d8;
   display: inline-block;
   float: right;
   height: 700px;
@@ -464,7 +464,7 @@ footer.footer {
 
 /* line 56, ../sass/partials/forms.scss */
 .menu-file-input {
-  background: #333;
+  background: #ccc;
   border-radius: 3px;
   cursor: pointer;
   display: block;
