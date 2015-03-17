@@ -345,9 +345,11 @@ Mixins
   margin: 0 25px; }
 
 .preview-menu-step {
-  font-size: 20px;
+  font-size: 18px;
   height: 30px;
-  width: 100%; }
+  width: 100%;
+  line-height: 40px;
+  vertical-align: bottom; }
 
 .menu-step-title {
   background-color: #3f3f3f;

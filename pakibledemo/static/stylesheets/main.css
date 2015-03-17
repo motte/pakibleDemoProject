@@ -424,12 +424,14 @@ footer.footer {
 
 /* line 21, ../sass/partials/forms.scss */
 .preview-menu-step {
-  font-size: 20px;
+  font-size: 18px;
   height: 30px;
   width: 100%;
+  line-height: 40px;
+  vertical-align: bottom;
 }
 
-/* line 26, ../sass/partials/forms.scss */
+/* line 28, ../sass/partials/forms.scss */
 .menu-step-title {
   background-color: #3f3f3f;
   border-radius: 50px;
@@ -446,12 +448,12 @@ footer.footer {
   vertical-align: middle;
 }
 
-/* line 42, ../sass/partials/forms.scss */
+/* line 44, ../sass/partials/forms.scss */
 .align-right {
   text-align: right;
 }
 
-/* line 46, ../sass/partials/forms.scss */
+/* line 48, ../sass/partials/forms.scss */
 .menu-input {
   border: 1px solid #eee;
   border-radius: 3px;
@@ -462,7 +464,7 @@ footer.footer {
   padding: 5px;
 }
 
-/* line 56, ../sass/partials/forms.scss */
+/* line 58, ../sass/partials/forms.scss */
 .menu-file-input {
   background: #ccc;
   border-radius: 3px;
@@ -475,7 +477,7 @@ footer.footer {
   text-align: right;
 }
 
-/* line 68, ../sass/partials/forms.scss */
+/* line 70, ../sass/partials/forms.scss */
 .submit-button {
   background-color: #009900;
   border: none;
@@ -491,7 +493,7 @@ footer.footer {
   text-align: center;
 }
 
-/* line 83, ../sass/partials/forms.scss */
+/* line 85, ../sass/partials/forms.scss */
 .submit-button:hover {
   background-color: rgba(0, 153, 0, 0.8);
 }
