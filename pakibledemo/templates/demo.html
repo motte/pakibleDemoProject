@@ -131,14 +131,14 @@
 
             $boxColorEl.bind("change", function(){
                 var hex = boxColor.colorHex;
-                hex = hex.replace(/^#/, '');
+{#                hex = hex.replace(/^#/, '');#}
                 canvas.setBackgroundColor(hex);
                 canvas.renderAll();
             });
             $textColorEl.bind("change", function(){
                 var hex = textColor.colorHex;
-                hex = hex.replace(/^#/, '');
-                rgb = new fabric.Color(hex).toRgb();
+{#                hex = hex.replace(/^#/, '');#}
+                var rgb = new fabric.Color(hex).toRgb();
                 tagline.fill = rgb;
                 leftWebsite.fill = rgb;
                 rightWebsite.fill = rgb;
