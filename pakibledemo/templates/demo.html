@@ -120,6 +120,7 @@
             var rightWebsite;
             var $boxColorEl = $('.colorPicker1');
             var $textColorEl = $('.colorPicker2');
+
             setCanvasSizes();
             initializePreview();
 
@@ -180,13 +181,15 @@
                 }
                 // create a wrapper around native canvas element with id="c"
                 canvas = new fabric.Canvas('c', {
-                    backgroundColor: 'FEFEFE',
+                    backgroundColor: '#FEFEFE',
                     height: canvasLength,
                     width: canvasLength,
                     renderOnAddRemove: false,
                     stateful: false,
                     crossOrigin: 'anonymous'
                 });
+
+                canvas.renderAll();
 
                 // Set global sizes
                 largeLogoSize = canvasLength * .1;
