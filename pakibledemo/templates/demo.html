@@ -122,7 +122,7 @@
             var $textColorEl = $('.colorPicker2');
 
             setCanvasSizes();
-            initializePreview();
+            setTimeout(function(){initializePreview();},300);
 
             $boxColorEl.tinycolorpicker();
             $textColorEl.tinycolorpicker();
